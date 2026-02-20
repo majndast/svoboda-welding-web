@@ -1,0 +1,153 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-amber: var(--amber);
+  --color-amber-dark: var(--amber-dark);
+  --color-steel: var(--steel);
+  --color-steel-light: var(--steel-light);
+  --color-muted: var(--muted);
+  --font-heading: var(--font-barlow);
+  --font-body: var(--font-inter);
+}
+
+:root {
+  --background: #0c0c0c;
+  --foreground: #e8e4dc;
+  --amber: #e07b00;
+  --amber-dark: #b36200;
+  --steel: #1a1a1a;
+  --steel-light: #252525;
+  --muted: #6b6560;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-inter), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Industrial horizontal rule */
+.rule-amber {
+  height: 1px;
+  background: linear-gradient(90deg, var(--amber) 0%, transparent 100%);
+}
+
+/* Amber text highlight */
+.text-amber {
+  color: var(--amber);
+}
+
+/* Industrial section divider */
+.section-divider {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.section-divider::before {
+  content: '';
+  display: block;
+  width: 3rem;
+  height: 2px;
+  background: var(--amber);
+}
+
+/* Sharp card - no border radius */
+.card-steel {
+  background: var(--steel);
+  border: 1px solid #2a2a2a;
+}
+
+/* Noise texture overlay */
+.noise {
+  position: relative;
+}
+
+.noise::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  pointer-events: none;
+}
+
+/* Amber glow */
+.glow-amber {
+  box-shadow: 0 0 30px rgba(224, 123, 0, 0.15);
+}
+
+/* Cut mark decoration */
+.cut-mark {
+  position: relative;
+}
+
+.cut-mark::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 60%;
+  background: var(--amber);
+}
+
+/* Industrial grid background (subtle, different from kovo-kuky) */
+.bg-industrial {
+  background-image:
+    linear-gradient(rgba(224, 123, 0, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(224, 123, 0, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* PSW monogram */
+.psw-mono {
+  font-family: var(--font-barlow), sans-serif;
+  font-weight: 900;
+  font-style: italic;
+  letter-spacing: -0.05em;
+  color: var(--amber);
+}
+
+/* Scroll indicator */
+@keyframes bounce-down {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(6px); }
+}
+
+.bounce-down {
+  animation: bounce-down 2s ease-in-out infinite;
+}
+
+/* Amber underline on hover */
+.hover-amber-line {
+  position: relative;
+}
+
+.hover-amber-line::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--amber);
+  transition: width 0.3s ease;
+}
+
+.hover-amber-line:hover::after {
+  width: 100%;
+}
